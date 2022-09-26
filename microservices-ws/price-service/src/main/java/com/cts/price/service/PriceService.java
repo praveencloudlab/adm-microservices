@@ -8,6 +8,8 @@ public interface PriceService {
 
 	double getPriceById(int id);
 
+	double calculateDiscount(String couponCode,int productId);
+
 	Product save(Product product);
 
 }

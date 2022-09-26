@@ -19,6 +19,14 @@ public class PriceServiceResource {
 	
 	@Autowired
 	private PriceService priceService;
+	
+	@GetMapping("/{productId}/{couponCode}")
+	public double discountedPrice(@PathVariable("productId")int productId,@PathVariable("couponCode")String couponCode) {
+		
+		return priceService.calculateDiscount(couponCode, productId);
+		
+	}
+	
 
 	@GetMapping("/{id}")
 	public double getPrice(@PathVariable("id") int id) {

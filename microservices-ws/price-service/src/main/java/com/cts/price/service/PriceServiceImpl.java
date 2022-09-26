@@ -13,6 +13,14 @@ public class PriceServiceImpl implements PriceService {
 	private PriceDao priceDao;
 
 	
+	public double calculateDiscount(String couponCode,int productId) {
+		// logic to calculate discount price for the given product ID
+		return 0.0;
+	}
+	
+	
+	
+	
 	public boolean isProductExit(int id) {
 		return priceDao.existsById(id);
 	}
