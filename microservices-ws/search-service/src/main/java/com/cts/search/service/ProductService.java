@@ -1,6 +1,7 @@
 package com.cts.search.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cts.search.entity.Product;
 
@@ -18,7 +19,7 @@ public interface ProductService {
 
 	boolean isProductExists(int productId);
 
-	void inventoryUpdate(int productId, int productQty);
+	void inventoryUpdate(int productId,int qty);
 
 	List<Product> findByProductTitleLike(String productTitle);
 

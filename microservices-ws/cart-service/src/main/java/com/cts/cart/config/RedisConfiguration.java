@@ -21,11 +21,7 @@ public class RedisConfiguration {
 		final RedisTemplate<String, ItemLine> template=new RedisTemplate<>();
 		template.setConnectionFactory(jedisConnectionFactory());
 		template.setKeySerializer(new StringRedisSerializer());
-		//template.setValueSerializer(new StringRedisSerializer());
 		template.setHashKeySerializer(new StringRedisSerializer());
-	    template.setHashValueSerializer(new LdapFailAwareRedisObjectSerializer());
-
-		
 		return template;
 	}
 	

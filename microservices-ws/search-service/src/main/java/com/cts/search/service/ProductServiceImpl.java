@@ -1,6 +1,7 @@
 package com.cts.search.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,13 +47,13 @@ public class ProductServiceImpl implements ProductService {
 
 	// Inventory Update
 	@Override
-	public void inventoryUpdate(int productId, int productQty) {
-
+	public void inventoryUpdate(int productId,int qty) {
+		
 		Product product = productDao.findById(productId).orElse(null);
 
 		if (product != null) {
-			product.setProductQty((product.getProductQty() - productQty));
-			productDao.save(product);
+			product.setProductQty((product.getProductQty() - qty));
+			productDao.save(product); // update
 		}
 	}
 

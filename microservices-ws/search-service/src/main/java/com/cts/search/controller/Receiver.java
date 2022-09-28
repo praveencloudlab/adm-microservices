@@ -1,5 +1,7 @@
 package com.cts.search.controller;
 
+import java.util.Map;
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,13 @@ public class Receiver {
 	
 
 	@RabbitListener(queues = "INVENTORYQ")
-	public void inventoryUpdate(int productId, int productQty) {
+	public void inventoryUpdate(Map<String, Object> orderInfo) {
+		int productId = (int)orderInfo.get("PRODUCT_ID");
+		int qty = (int)orderInfo.get("QTY");
 
 		System.out.println("=============================================================");
 		System.out.println("UPDATING INVENTORY FROM PRODUCT-SERVICE");
-		productService.inventoryUpdate(productId, productQty);
+		productService.inventoryUpdate(productId, qty);
 		System.out.println("INVENTORY UPDATE SUCCESS");
 		System.out.println("=============================================================");
 
